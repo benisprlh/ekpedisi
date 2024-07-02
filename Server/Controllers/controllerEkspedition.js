@@ -1,9 +1,9 @@
-const { Expedition } = require("../models");
+const { Ekspedition } = require("../models");
 
-class ControllerExpedition {
+class ControllerEkspedition {
   static async get(req, res, next) {
     try {
-      const packages = await Expedition.findAll();
+      const packages = await Ekspedition.findAll();
       res.status(200).json(packages);
     } catch (error) {
       next(error);
@@ -11,4 +11,4 @@ class ControllerExpedition {
   }
 }
 
-module.exports = ControllerExpedition;
+module.exports = ControllerEkspedition;

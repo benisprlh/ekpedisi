@@ -1,7 +1,7 @@
-const ControllerExpedition = require("../Controllers/controllerEkspedition");
+const ControllerEkspedition = require("../Controllers/controllerEkspedition");
 
 const router = require("express").Router();
 
-router.get("", ControllerExpedition.get);
+router.get("", ControllerEkspedition.get);
 
 module.exports = router;

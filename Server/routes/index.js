@@ -1,5 +1,3 @@
-const ControllerPackage = require("../Controllers/controllerPackage");
-
 const router = require("express").Router();
 const package = require("./package");
 const ekspedition = require("./ekspedition");
