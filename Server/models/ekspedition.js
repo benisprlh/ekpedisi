@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Ekspedition.hasMany(models.Package);
+      Ekspedition.hasMany(models.Package, { foreignKey: "EkspedisiID" });
     }
   }
   Ekspedition.init(
