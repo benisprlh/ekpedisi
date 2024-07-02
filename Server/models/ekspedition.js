@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Ekspedition.hasMany(models.Packages);
+      Ekspedition.hasMany(models.Package);
     }
   }
   Ekspedition.init(
