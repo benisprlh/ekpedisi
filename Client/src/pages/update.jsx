@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
-const Create = () => {
+const Update = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
   const [expeditions, setExpeditions] = useState([]);
   const [formData, setFormData] = useState({
@@ -17,8 +18,18 @@ const Create = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
+    fetchPackage();
     fetchExpeditions();
-  }, []);
+  }, [id]);
+
+  const fetchPackage = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3000/packages/${id}`);
+      setFormData(response.data);
+    } catch (error) {
+      console.error("Error fetching package:", error);
+    }
+  };
 
   const fetchExpeditions = async () => {
     try {
@@ -36,7 +47,7 @@ const Create = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:3000/packages`, formData);
+      await axios.put(`http://localhost:3000/packages/${id}`, formData);
       navigate("/");
     } catch (error) {
       setErrorMessage(error.response.data.message);
@@ -47,7 +58,7 @@ const Create = () => {
     <div className="container mt-4 d-flex justify-content-center">
       <div className="card">
         <div className="card-body">
-          <h1 className="mb-4">Create Package</h1>
+          <h1 className="mb-4">Edit Package</h1>
           {errorMessage && <p className="text-danger">{errorMessage}</p>}
           <form onSubmit={handleSubmit}>
             <div className="form-group">
@@ -126,7 +137,7 @@ const Create = () => {
               </select>
             </div>
             <button type="submit" className="btn btn-primary mr-2">
-              Create
+              Update
             </button>
             <Link to={`/`} className="btn btn-secondary">
               Cancel
@@ -138,4 +149,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default Update;

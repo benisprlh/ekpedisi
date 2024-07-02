@@ -1,7 +1,8 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
 import Home from "../pages/home";
-// import Update from "../pages/update";
+import Update from "../pages/update";
 import Create from "../pages/create";
+import Report from "../pages/report";
 
 const router = createBrowserRouter([
   {
@@ -15,10 +16,14 @@ const router = createBrowserRouter([
         path: "/create",
         element: <Create />,
       },
-      // {
-      //   path: "/update/:id",
-      //   element: <Update />,
-      // },
+      {
+        path: "/update/:id",
+        element: <Update />,
+      },
+      {
+        path: "/report",
+        element: <Report />,
+      },
     ],
   },
 ]);

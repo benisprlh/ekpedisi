@@ -33,7 +33,7 @@ const Home = () => {
       <Link to={`/create`} className="btn btn-primary m-3">
         Create
       </Link>
-      <Link to={`/create`} className="btn btn-primary m-3">
+      <Link to={`/report`} className="btn btn-primary m-3">
         Reports
       </Link>
       <div className="table-responsive">
